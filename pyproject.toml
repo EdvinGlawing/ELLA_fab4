@@ -6,10 +6,12 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.136.1",
+    "ipykernel>=7.2.0",
     "mlflow>=3.11.1",
     "pandas>=2.3.3",
     "pydantic>=2.13.3",
     "pydantic-ai>=1.86.1",
+    "requests>=2.33.1",
     "streamlit>=1.56.0",
     "uvicorn>=0.46.0",
 ]
