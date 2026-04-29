@@ -8,15 +8,10 @@ Detta dokument beskriver hur gruppen samarbetar och fördelar ansvar under proje
 Vi ska skapa en RAG-applikation (Retrieval-Augmented Generation) baserad på **Brottsbalken**. Applikationen ska låta användare ställa frågor om lagtexten och få svar med referenser.
 
 ## 2. Rollfördelning (4 personer)
-För att säkerställa att alla har relevanta commits och bidrag, har vi delat upp ansvaret enligt följande:
-
-* **Data & RAG-arkitekt:** Ansvarar för insamling av lagtext, chunking, embeddings och vektordatabas.
-* **Backend-ansvarig:** Ansvarar för API-utveckling i FastAPI samt integration med LLM. Ansvarar även för bonusdelen med MLFlow.
-* **Frontend-utvecklare:** Ansvarar för gränssnittet och användarupplevelsen (UX), inklusive.
-* **DevOps & Infrastruktur:** Ansvarar för Dockerisering, GitHub-struktur och deployment till Azure (bonus).
+* Vi kommer att mobcodea tilsammans.
 
 ## 3. Arbetstider och Möten
-* **Kärntid:** Vi arbetar alla föreläsningsfria dagar mellan kl. **13:00 – 16:00**. Under denna tid ska alla vara tillgängliga för samarbete och frågor.
+* **Kärntid:** Vi arbetar alla föreläsningsfria dagar mellan kl. **10:00 - till vi känner oss klara**. Under denna tid ska alla vara tillgängliga för samarbete och frågor.
 * **Daily Standup:** Tre dagar i veckan hålls ett kort möte (max 10 min) där vi går igenom vad vi gjort, vad vi ska göra och om någon är blockerad.
 
 ## 4. Agilt arbetsflöde (Kanban)
