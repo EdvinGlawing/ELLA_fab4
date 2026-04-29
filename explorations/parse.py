@@ -1,3 +1,5 @@
+# LLM generated code
+
 """
 Brottsbalken Parser – Markdown → JSON
 ======================================
