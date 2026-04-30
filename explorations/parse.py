@@ -242,12 +242,12 @@ def main() -> None:
     )
     parser.add_argument(
         "--input",  "-i",
-        default="brottsbalken.md",
+        default="data/brottsbalken.md",
         help="Sökväg till markdown-filen (default: brottsbalken.md)",
     )
     parser.add_argument(
         "--output", "-o",
-        default="brottsbalken.json",
+        default="data/brottsbalken.json",
         help="Sökväg för output-JSON (default: brottsbalken.json)",
     )
     args = parser.parse_args()
