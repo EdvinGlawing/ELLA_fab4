@@ -6,7 +6,7 @@ import pandas as pd
 from lancedb.embeddings import get_registry
 from lancedb.pydantic import LanceModel, Vector
 
-from utils.constants import EMBEDDING_MODEL
+from src.brottsbalken.utils.constants import EMBEDDING_MODEL
 
 
 DATA_PATH = Path("data/clean_data/brottsbalken_clean.json")
@@ -74,5 +74,5 @@ def vectorize() -> None:
     print(f"{table.count_rows()} paragrafer indexerade i tabellen '{TABLE_NAME}'.")
 
 
-if name == "main":
+if __name__ == "main":
     vectorize()
