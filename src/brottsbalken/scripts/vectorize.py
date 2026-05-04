@@ -3,16 +3,18 @@ from pathlib import Path
 
 import lancedb
 import pandas as pd
+from dotenv import load_dotenv
 from lancedb.embeddings import get_registry
 from lancedb.pydantic import LanceModel, Vector
 
-from src.brottsbalken.utils.constants import EMBEDDING_MODEL
+from brottsbalken.backend.constants import (
+    CLEAN_DATA_PATH,
+    VECTOR_DB_PATH,
+    TABLE_NAME,
+    EMBEDDING_MODEL,
+)
 
-
-DATA_PATH = Path("data/clean_data/brottsbalken_clean.json")
-DB_PATH = Path("lancedb")
-TABLE_NAME = "brottsbalken"
-
+load_dotenv()
 
 embedding_model = get_registry().get("cohere").create(name=EMBEDDING_MODEL)
 
@@ -47,15 +49,15 @@ def build_embed_text(row: pd.Series) -> str:
 
 
 def vectorize() -> None:
-    df = load_data(DATA_PATH)
+    df = load_data(CLEAN_DATA_PATH)
     df["embed_text"] = df.apply(build_embed_text, axis=1)
 
-    db = lancedb.connect(DB_PATH)
+    db = lancedb.connect(VECTOR_DB_PATH)
 
     table = db.create_table(
         TABLE_NAME,
         schema=ParagraphModel,
-        mode="append",
+        mode="overwrite",
     )
 
     table.add(
@@ -74,5 +76,5 @@ def vectorize() -> None:
     print(f"{table.count_rows()} paragrafer indexerade i tabellen '{TABLE_NAME}'.")
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     vectorize()

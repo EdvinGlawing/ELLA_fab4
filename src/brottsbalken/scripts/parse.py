@@ -40,6 +40,10 @@ import json
 import argparse
 from pathlib import Path
 
+BASE_PATH = Path(__file__).resolve().parents[1]
+RAW_DATA_PATH = BASE_PATH / "data" / "raw_data"
+CLEAN_DATA_PATH = BASE_PATH / "data" / "clean_data"
+
 
 # ── 1. Läs fil ────────────────────────────────────────────────────────────────
 
@@ -242,12 +246,12 @@ def main() -> None:
     )
     parser.add_argument(
         "--input",  "-i",
-        default="../data/raw_data/brottsbalken.md",
+        default=RAW_DATA_PATH / "brottsbalken.md",
         help="Sökväg till markdown-filen (default: brottsbalken.md)",
     )
     parser.add_argument(
         "--output", "-o",
-        default="../data/raw_data/brottsbalken.json",
+        default=RAW_DATA_PATH / "brottsbalken.json",
         help="Sökväg för output-JSON (default: brottsbalken.json)",
     )
     args = parser.parse_args()

@@ -12,6 +12,7 @@ dependencies = [
     "pandas>=2.3.3",
     "pydantic>=2.13.3",
     "pydantic-ai>=1.86.1",
+    "python-dotenv>=1.2.2",
     "requests>=2.33.1",
     "streamlit>=1.56.0",
     "uvicorn>=0.46.0",
