@@ -2,6 +2,13 @@ version = 1
 revision = 3
 requires-python = ">=3.12"
 
+[manifest]
+members = [
+    "brottsbalken-backend",
+    "brottsbalken-frontend",
+    "ella-fab4",
+]
+
 [[package]]
 name = "ag-ui-protocol"
 version = "0.1.18"
@@ -306,6 +313,50 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/a0/29/a6d95515b49357891f63cb7a93fef37334118ba7d11d686d139e5d648733/botocore-1.42.95.tar.gz", hash = "sha256:f23a78b76def67222ddac738fb65475f55d17fd88c1e18573b3a561135ec4527", size = 15260896, upload-time = "2026-04-23T21:35:22.335Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/fa/ee/b08867e183922dd356d2d8f23bafd7bb6b24c5992bdb301873edbb096e2d/botocore-1.42.95-py3-none-any.whl", hash = "sha256:3381279d26792df2fcc3d5d7fa052ecf1949a0fe1ea819bf35d61e943c15a3b6", size = 14943430, upload-time = "2026-04-23T21:35:18.976Z" },
+]
+
+[[package]]
+name = "brottsbalken-backend"
+version = "0.1.0"
+source = { virtual = "src/brottsbalken/backend" }
+dependencies = [
+    { name = "fastapi" },
+    { name = "lancedb" },
+    { name = "pandas" },
+    { name = "pydantic" },
+    { name = "pydantic-ai" },
+    { name = "python-dotenv" },
+    { name = "requests" },
+    { name = "uvicorn" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", specifier = ">=0.136.1" },
+    { name = "lancedb", specifier = ">=0.30.2" },
+    { name = "pandas", specifier = ">=2.3.3" },
+    { name = "pydantic", specifier = ">=2.13.3" },
+    { name = "pydantic-ai", specifier = ">=1.86.1" },
+    { name = "python-dotenv", specifier = ">=1.2.2" },
+    { name = "requests", specifier = ">=2.33.1" },
+    { name = "uvicorn", specifier = ">=0.46.0" },
+]
+
+[[package]]
+name = "brottsbalken-frontend"
+version = "0.1.0"
+source = { virtual = "src/brottsbalken/frontend" }
+dependencies = [
+    { name = "httpx" },
+    { name = "python-dotenv" },
+    { name = "streamlit" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "httpx" },
+    { name = "python-dotenv", specifier = ">=1.2.2" },
+    { name = "streamlit", specifier = ">=1.56.0" },
 ]
 
 [[package]]
@@ -789,32 +840,14 @@ name = "ella-fab4"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "fastapi" },
     { name = "ipykernel" },
-    { name = "lancedb" },
     { name = "mlflow" },
-    { name = "pandas" },
-    { name = "pydantic" },
-    { name = "pydantic-ai" },
-    { name = "python-dotenv" },
-    { name = "requests" },
-    { name = "streamlit" },
-    { name = "uvicorn" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", specifier = ">=0.136.1" },
     { name = "ipykernel", specifier = ">=7.2.0" },
-    { name = "lancedb", specifier = ">=0.30.2" },
-    { name = "mlflow", specifier = ">=3.11.1" },
-    { name = "pandas", specifier = ">=2.3.3" },
-    { name = "pydantic", specifier = ">=2.13.3" },
-    { name = "pydantic-ai", specifier = ">=1.86.1" },
-    { name = "python-dotenv", specifier = ">=1.2.2" },
-    { name = "requests", specifier = ">=2.33.1" },
-    { name = "streamlit", specifier = ">=1.56.0" },
-    { name = "uvicorn", specifier = ">=0.46.0" },
+    { name = "mlflow", specifier = ">=3.1.1" },
 ]
 
 [[package]]
