@@ -320,6 +320,7 @@ name = "brottsbalken-backend"
 version = "0.1.0"
 source = { virtual = "src/brottsbalken/backend" }
 dependencies = [
+    { name = "cohere" },
     { name = "fastapi" },
     { name = "lancedb" },
     { name = "pandas" },
@@ -332,6 +333,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "cohere", specifier = ">=5.21.1" },
     { name = "fastapi", specifier = ">=0.136.1" },
     { name = "lancedb", specifier = ">=0.30.2" },
     { name = "pandas", specifier = ">=2.3.3" },
