@@ -32,12 +32,15 @@ class Source(BaseModel):
     paragraph: str
     text: str
 
+class LLMAnswer(BaseModel):
+    answer: str  # Svaret från LLM:en
+    is_relevant: bool  # LLM:en kryssar i om frågan handlade om Brottsbalken eller inte
 
 class RagResponse(BaseModel):
     # The LLM-generated answer
     answer: str = Field(description="Answer based on retrieved Brottsbalken context")
     # The legal sources used as context for the answer
-    sources: list[Source] = Field(
+    sources: list[Source] | None = Field(
         default_factory=list,
         description="Retrieved legal sources from Brottsbalken",
     )
