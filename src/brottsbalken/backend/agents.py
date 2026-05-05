@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 from pydantic_ai import Agent
 
 from brottsbalken.backend.constants import MODEL_MEDIUM
-from brottsbalken.backend.data_models import RagResponse, Source
+from brottsbalken.backend.data_models import RagResponse, Source, LLMAnswer
 from brottsbalken.backend.retriever import retrieve_sources
 
 load_dotenv()
@@ -24,7 +24,7 @@ load_dotenv()
 # The LLM agent
 law_agent = Agent(
     model=MODEL_MEDIUM,
-    output_type=str,
+    output_type=LLMAnswer,
     system_prompt="""
 Du är en juridisk informationsassistent som svarar på frågor om Brottsbalken.
 
@@ -35,6 +35,7 @@ Regler:
 - Svara tydligt och kortfattat.
 - Hänvisa alltid till kapitel och paragraf.
 - Skriv på svenska.
+- Sätt is_relevant till false om frågan inte handlar om Brottsbalken.
 """,
 )
 
@@ -86,6 +87,6 @@ Svara på frågan baserat på lagtexten ovan.
 
     # Return answer and sources to the API
     return RagResponse(
-        answer=result.output,
-        sources=sources,
+        answer=result.output.answer,
+        sources=sources if result.output.is_relevant else None,
     )
