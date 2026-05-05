@@ -1,0 +1,13 @@
+[project]
+name = "brottsbalken-frontend"
+version = "0.1.0"
+description = "Frontend for Brottsbalken RAG chatbot"
+requires-python = ">=3.12"
+dependencies = [
+    "streamlit>=1.56.0",
+    "httpx",
+    "python-dotenv>=1.2.2",
+]
+
+[tool.uv]
+package = false
