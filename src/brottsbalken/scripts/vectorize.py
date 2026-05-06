@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from lancedb.embeddings import get_registry
 from lancedb.pydantic import LanceModel, Vector
 
-from brottsbalken.backend.constants import (
+from backend.constants import (
     CLEAN_DATA_PATH,
     VECTOR_DB_PATH,
     TABLE_NAME,

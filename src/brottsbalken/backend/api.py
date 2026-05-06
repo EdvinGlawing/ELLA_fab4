@@ -11,13 +11,13 @@ Frontend/user sends a question:
 
 Backend returns:
     - answer
-    - sources used for the answer
+    - sources used for theu answer
 """
 
 from fastapi import FastAPI
 
-from brottsbalken.backend.agents import bot_answer
-from brottsbalken.backend.data_models import Prompt, RagResponse
+from agents import bot_answer
+from data_models import Prompt, RagResponse
 
 # Create the FastAPI app
 app = FastAPI()
