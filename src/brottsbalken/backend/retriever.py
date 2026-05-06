@@ -17,7 +17,7 @@ Used by:
 import lancedb
 from dotenv import load_dotenv
 
-from brottsbalken.backend.constants import TABLE_NAME, VECTOR_DB_PATH
+from constants import TABLE_NAME, VECTOR_DB_PATH
 
 load_dotenv()
 

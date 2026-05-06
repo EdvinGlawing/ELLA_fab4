@@ -15,9 +15,9 @@ This is where the "generation" part of RAG happens.
 from dotenv import load_dotenv
 from pydantic_ai import Agent
 
-from brottsbalken.backend.constants import MODEL_MEDIUM
-from brottsbalken.backend.data_models import RagResponse, Source, LLMAnswer
-from brottsbalken.backend.retriever import retrieve_sources
+from constants import MODEL_MEDIUM
+from data_models import RagResponse, Source, LLMAnswer
+from retriever import retrieve_sources
 
 load_dotenv()
 
