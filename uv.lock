@@ -838,18 +838,39 @@ wheels = [
 ]
 
 [[package]]
+name = "elevenlabs"
+version = "2.45.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "pydantic" },
+    { name = "pydantic-core" },
+    { name = "requests" },
+    { name = "typing-extensions" },
+    { name = "websockets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/2c/a3/1696fd5b32e94703ff64b009de49bc5f4909397b5400900e3c5ca10a6499/elevenlabs-2.45.0.tar.gz", hash = "sha256:237eb96508e973393eb273728c562ae1f029764a544ab282acfd5d6d1cb8a043", size = 554966, upload-time = "2026-04-27T09:57:21.439Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/60/2f/e9136e7b049898fcd8ddf1836d687cac0acc5ed76329740942498fe602e0/elevenlabs-2.45.0-py3-none-any.whl", hash = "sha256:19edf75de4da22b340bd96c833c3589a9871015addc1d487b034b4541c71b0ef", size = 1518097, upload-time = "2026-04-27T09:57:19.102Z" },
+]
+
+[[package]]
 name = "ella-fab4"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "elevenlabs" },
     { name = "ipykernel" },
     { name = "mlflow" },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "elevenlabs", specifier = ">=2.45.0" },
     { name = "ipykernel", specifier = ">=7.2.0" },
     { name = "mlflow", specifier = ">=3.1.1" },
+    { name = "python-dotenv", specifier = ">=1.2.2" },
 ]
 
 [[package]]

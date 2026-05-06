@@ -1,32 +1,42 @@
 import streamlit as st
 import httpx
-import os 
+import os
+import base64
 from pathlib import Path
+from elevenlabs import ElevenLabs
+from dotenv import load_dotenv
+load_dotenv()
 
-# Inställningar för API
 API_URL = os.getenv("API_URL", "http://localhost:8000/rag/query")
+ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "din-elevenlabs-nyckel")
+VOICE_ID = os.getenv("VOICE_ID", "ditt-voice-id")
+
+eleven_client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
 
 def speak_text(text):
-    """Läs upp texten via webbläsaren."""
-    if text:
-        clean_text = text.replace('"', "'").replace('\n', ' ')
-        js_code = f"""
-            <script>
-            var msg = new SpeechSynthesisUtterance("{clean_text}");
-            msg.lang = 'sv-SE';
-            window.speechSynthesis.speak(msg);
-            </script>
-        """
-        st.components.v1.html(js_code, height=0)
+    if not text:
+        return
+    try:
+        audio_generator = eleven_client.text_to_speech.convert(
+            voice_id=VOICE_ID,
+            text=text,
+            model_id="eleven_multilingual_v2",
+            voice_settings={"stability": 0.5, "similarity_boost": 0.75}
+        )
+        audio_bytes = b"".join(audio_generator)
+        b64 = base64.b64encode(audio_bytes).decode()
+        st.markdown(
+            f'<audio autoplay controls><source src="data:audio/mpeg;base64,{b64}" type="audio/mpeg"></audio>',
+            unsafe_allow_html=True
+        )
+    except Exception as e:
+        st.warning(f"Kunde inte läsa upp svaret: {e}")
 
 def handle_submit():
-    """Hanterar inskickad fråga."""
     if st.session_state.widget_input.strip() != "":
         st.session_state.current_question = st.session_state.widget_input
         st.session_state.widget_input = ""
         st.session_state.last_answer = ""
-        # Vi sätter en flagga för att veta att det är en ny fråga som ska läsas upp
-        st.session_state.should_speak = True
 
 def layout(): 
     st.markdown('<p style="font-size: 30px; color: lightblue;">Fråga Brottsbalken om du gjort något sus 👮‍♂️</p>', unsafe_allow_html=True)
@@ -35,8 +45,6 @@ def layout():
         st.session_state.current_question = ""
     if "last_answer" not in st.session_state:
         st.session_state.last_answer = ""
-    if "should_speak" not in st.session_state:
-        st.session_state.should_speak = False
 
     st.text_input(label="Skriv din fråga här", key="widget_input", on_change=handle_submit)
 
@@ -45,14 +53,12 @@ def layout():
             handle_submit()
             st.rerun()
 
-    # Logik för laddning (Bild + API)
     if st.session_state.current_question and not st.session_state.last_answer:
         image_placeholder = st.empty()
         with st.spinner('Edvin söker i Brottsbalken...'):
             image_path = Path(__file__).parent / "Edvin.png"
             if image_path.exists():
                 image_placeholder.image(str(image_path), caption="Edvin letar svar...", width=250)
-            
             try:
                 response = httpx.post(API_URL, json={"prompt": st.session_state.current_question}, timeout=30)
                 st.session_state.last_answer = response.json()["answer"]
@@ -62,16 +68,13 @@ def layout():
                 image_placeholder.empty()
                 st.error(f"Kunde inte hämta svar: {e}")
 
-    # Visa resultatet OCH kör rösten
     if st.session_state.last_answer:
         st.markdown("---")
         st.markdown(f"### Fråga:\n{st.session_state.current_question}")
         st.markdown(f"### Svar:\n{st.session_state.last_answer}")
         
-        # Kör rösten bara en gång per svar
-        if st.session_state.should_speak:
+        if st.button("🔊 Läs upp svar"):
             speak_text(st.session_state.last_answer)
-            st.session_state.should_speak = False
 
 if __name__ == "__main__":
     layout()

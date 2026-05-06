@@ -5,8 +5,10 @@ description = "Brottsbalken chatbot"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "elevenlabs>=2.45.0",
     "ipykernel>=7.2.0",
     "mlflow>=3.1.1",
+    "python-dotenv>=1.2.2",
 ]
 
 [tool.uv]
