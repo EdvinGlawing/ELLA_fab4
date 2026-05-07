@@ -20,4 +20,5 @@ package = false
 members = [
     "src/brottsbalken/backend",
     "src/brottsbalken/frontend",
+    "src/brottsbalken/monitoring",
 ]

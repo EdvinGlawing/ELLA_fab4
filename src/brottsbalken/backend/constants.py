@@ -27,6 +27,8 @@ VECTOR_DB_PATH = BASE_PATH / "knowledge_base" / "lancedb"
 # Name of the LanceDB table
 TABLE_NAME = "brottsbalken"
 
+MONITORING_PATH = BASE_PATH / "monitoring"
+
 EMBEDDING_MODEL = "embed-multilingual-light-v3.0"
 
 MODEL_SMALL="openrouter:openai/gpt-oss-20b:free"
