@@ -14,29 +14,23 @@ This is where the "generation" part of RAG happens.
 """
 from dotenv import load_dotenv
 from pydantic_ai import Agent
+from mlflow.genai.prompts import load_prompt
+import mlflow
 
-from constants import MODEL_MEDIUM
+from constants import MODEL_MEDIUM, MONITORING_PATH
 from data_models import RagResponse, Source, LLMAnswer
 from retriever import retrieve_sources
 
 load_dotenv()
 
+mlflow.set_tracking_uri(f"sqlite:///{MONITORING_PATH / 'mlflow.db'}")
+mlflow.set_experiment("brottsbalken-rag")
+
 # The LLM agent
 law_agent = Agent(
     model=MODEL_MEDIUM,
     output_type=LLMAnswer,
-    system_prompt="""
-Du är en juridisk informationsassistent som svarar på frågor om Brottsbalken.
-
-Regler:
-- Svara endast baserat på den hämtade lagtexten.
-- Om svaret inte finns i materialet, säg att du inte hittar stöd i Brottsbalken.
-- Ge inte personlig juridisk rådgivning.
-- Svara tydligt och kortfattat.
-- Hänvisa alltid till kapitel och paragraf.
-- Skriv på svenska.
-- Sätt is_relevant till false om frågan inte handlar om Brottsbalken.
-""",
+    system_prompt=load_prompt("law-agent-system-prompt", version=13).format(),
 )
 
 
