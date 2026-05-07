@@ -1,6 +1,7 @@
 import streamlit as st
 import httpx
 import os
+import re
 import base64
 from pathlib import Path
 from elevenlabs import ElevenLabs
@@ -13,13 +14,22 @@ VOICE_ID = os.getenv("VOICE_ID", "ditt-voice-id")
 
 eleven_client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
 
+def preprocess_law_text(text: str) -> str:
+    text = re.sub(r'\b(\d+)\s*§', r'paragraf \1', text)
+    text = re.sub(r'§\s*(\d+)', r'paragraf \1', text)
+    text = text.replace("§§", "paragrafer").replace("§", "paragraf").replace("kap.", "kapitel")
+    return text
+
+# ── ElevenLabs ────────────────────────────────────────────────────────────────
+
 def speak_text(text):
     if not text:
         return
     try:
+        clean_text = preprocess_law_text(text)  # 👈 förbehandla här
         audio_generator = eleven_client.text_to_speech.convert(
             voice_id=VOICE_ID,
-            text=text,
+            text=clean_text,
             model_id="eleven_multilingual_v2",
             voice_settings={"stability": 0.5, "similarity_boost": 0.75}
         )
@@ -32,15 +42,17 @@ def speak_text(text):
     except Exception as e:
         st.warning(f"Kunde inte läsa upp svaret: {e}")
 
+# ── Streamlit-layout (oförändrad) ─────────────────────────────────────────────
+
 def handle_submit():
     if st.session_state.widget_input.strip() != "":
         st.session_state.current_question = st.session_state.widget_input
         st.session_state.widget_input = ""
         st.session_state.last_answer = ""
 
-def layout(): 
+def layout():
     st.markdown('<p style="font-size: 30px; color: lightblue;">Fråga Brottsbalken om du gjort något sus 👮‍♂️</p>', unsafe_allow_html=True)
-    
+
     if "current_question" not in st.session_state:
         st.session_state.current_question = ""
     if "last_answer" not in st.session_state:
@@ -72,7 +84,7 @@ def layout():
         st.markdown("---")
         st.markdown(f"### Fråga:\n{st.session_state.current_question}")
         st.markdown(f"### Svar:\n{st.session_state.last_answer}")
-        
+
         if st.button("🔊 Läs upp svar"):
             speak_text(st.session_state.last_answer)
 
