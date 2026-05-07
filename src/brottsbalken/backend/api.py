@@ -18,15 +18,15 @@ from contextlib import asynccontextmanager
 
 import mlflow
 from fastapi import FastAPI
-
-from agents import bot_answer, law_agent
+from contextlib import asynccontextmanager
+from middleware import logging_middleware
 from constants import MONITORING_PATH
 from data_models import Prompt, RagResponse
-
 
 mlflow.set_tracking_uri(f"sqlite:///{MONITORING_PATH / 'mlflow.db'}")
 mlflow.set_experiment("brottsbalken")
 mlflow.pydantic_ai.autolog()
+from agents import bot_answer, law_agent
 
 
 @asynccontextmanager
@@ -50,6 +50,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+logging_middleware(app)
 
 @app.get("/health")
 async def health_check():
