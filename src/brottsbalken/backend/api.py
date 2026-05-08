@@ -42,7 +42,7 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    mlflow.end_run()
+    #mlflow.end_run()
 
 
 app = FastAPI(

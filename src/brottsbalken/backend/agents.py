@@ -30,7 +30,7 @@ mlflow.set_experiment("brottsbalken-rag")
 law_agent = Agent(
     model=MODEL_MEDIUM,
     output_type=LLMAnswer,
-    system_prompt=load_prompt("law-agent-system-prompt", version=13).format(),
+    system_prompt=load_prompt("law-agent-system-prompt", version=14).format(),
 )
 
 
