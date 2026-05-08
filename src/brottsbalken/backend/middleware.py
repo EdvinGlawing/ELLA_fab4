@@ -3,7 +3,7 @@ from starlette.responses import Response
 from starlette.middleware.base import RequestResponseEndpoint
 import time
 import mlflow
-from constants import MONITORING_PATH
+from .constants import MONITORING_PATH
 
 
 def logging_middleware(app: FastAPI):

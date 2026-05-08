@@ -865,6 +865,7 @@ dependencies = [
     { name = "ipykernel" },
     { name = "lancedb" },
     { name = "mlflow" },
+    { name = "pydantic-ai" },
     { name = "python-dotenv" },
 ]
 
@@ -875,6 +876,7 @@ requires-dist = [
     { name = "ipykernel", specifier = ">=7.2.0" },
     { name = "lancedb", specifier = ">=0.30.2" },
     { name = "mlflow", specifier = ">=3.1.1" },
+    { name = "pydantic-ai", specifier = ">=1.86.1" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
 ]
 
@@ -2359,6 +2361,7 @@ name = "monitoring"
 version = "0.1.0"
 source = { virtual = "src/brottsbalken/monitoring" }
 dependencies = [
+    { name = "elevenlabs" },
     { name = "ipykernel" },
     { name = "mlflow" },
     { name = "pandas" },
@@ -2367,6 +2370,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "elevenlabs", specifier = ">=2.45.0" },
     { name = "ipykernel", specifier = ">=7.2.0" },
     { name = "mlflow", specifier = ">=3.1.1" },
     { name = "pandas", specifier = ">=2.3.3" },

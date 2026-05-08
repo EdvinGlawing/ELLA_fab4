@@ -19,14 +19,14 @@ from contextlib import asynccontextmanager
 import mlflow
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from middleware import logging_middleware
-from constants import MONITORING_PATH
-from data_models import Prompt, RagResponse
+from .middleware import logging_middleware
+from .constants import MONITORING_PATH
+from .data_models import Prompt, RagResponse
+from .agents import bot_answer, law_agent
 
 mlflow.set_tracking_uri(f"sqlite:///{MONITORING_PATH / 'mlflow.db'}")
 mlflow.set_experiment("brottsbalken")
 mlflow.pydantic_ai.autolog()
-from agents import bot_answer, law_agent
 
 
 @asynccontextmanager
