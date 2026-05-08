@@ -17,7 +17,7 @@ from pydantic_ai import Agent
 from mlflow.genai.prompts import load_prompt
 import mlflow
 
-from .constants import MODEL_MEDIUM, MONITORING_PATH
+from .constants import MODEL_MEDIUM, MONITORING_PATH, MODEL_LARGE
 from .data_models import RagResponse, Source, LLMAnswer
 from .retriever import retrieve_sources
 
