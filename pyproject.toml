@@ -10,6 +10,7 @@ dependencies = [
     "ipykernel>=7.2.0",
     "lancedb>=0.30.2",
     "mlflow>=3.1.1",
+    "pydantic-ai>=1.86.1",
     "python-dotenv>=1.2.2",
 ]
 
