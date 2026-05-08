@@ -1,27 +1,68 @@
 [
   {
-    "question": "Vad är straffet för mord?",
-    "expected_source": "3 kap. 1 §",
-    "expected_keywords": ["mord", "fängelse", "livstid"]
+    "inputs": {
+      "question": "Vad är straffet för mord?"
+    },
+    "expectations": {
+      "expected_source": "3 kap. 1 § brottsbalken",
+      "expected_keywords": [
+        "mord",
+        "fängelse",
+        "livstid"
+      ]
+    }
   },
   {
-    "question": "Vad säger Brottsbalken om stöld?",
-    "expected_source": "8 kap. 1 §",
-    "expected_keywords": ["stöld", "olovligen", "tillgrepp"]
+    "inputs": {
+      "question": "Vad säger Brottsbalken om stöld?"
+    },
+    "expectations": {
+      "expected_source": "8 kap. 1 § brottsbalken",
+      "expected_keywords": [
+        "stöld",
+        "olovligen",
+        "tillgrepp"
+      ]
+    }
   },
   {
-    "question": "Vad är misshandel?",
-    "expected_source": "3 kap. 5 §",
-    "expected_keywords": ["misshandel", "kroppsskada", "sjukdom", "smärta"]
+    "inputs": {
+      "question": "Vad är misshandel?"
+    },
+    "expectations": {
+      "expected_source": "3 kap. 5 § brottsbalken",
+      "expected_keywords": [
+        "misshandel",
+        "kroppsskada",
+        "sjukdom",
+        "smärta"
+      ]
+    }
   },
   {
-    "question": "Vad är olaga hot?",
-    "expected_source": "4 kap. 5 §",
-    "expected_keywords": ["olaga hot", "hotar", "brottslig gärning"]
+    "inputs": {
+      "question": "Vad är olaga hot?"
+    },
+    "expectations": {
+      "expected_source": "4 kap. 5 § brottsbalken",
+      "expected_keywords": [
+        "olaga hot",
+        "hotar",
+        "brottslig gärning"
+      ]
+    }
   },
   {
-    "question": "Vad äter tigrar?",
-    "expected_source": null,
-    "expected_keywords": ["hittar inget stöd", "Brottsbalken"]
+    "inputs": {
+      "question": "Vad äter tigrar?"
+    },
+    "expectations": {
+      "expected_source": null,
+      "expected_keywords": [
+        "hittar inget stöd",
+        "Brottsbalken",
+        "avvisa frågan"
+      ]
+    }
   }
 ]
