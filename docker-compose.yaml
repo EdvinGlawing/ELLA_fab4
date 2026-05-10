@@ -1,0 +1,47 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: src/brottsbalken/backend/Dockerfile
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app/src
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src/brottsbalken/knowledge_base:/app/src/brottsbalken/knowledge_base
+      - ./src/brottsbalken/monitoring:/app/src/brottsbalken/monitoring
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: .
+      dockerfile: src/brottsbalken/frontend/Dockerfile
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app/src
+      - API_URL=http://backend:8000/rag/query
+    ports:
+      - "8501:8501"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  monitoring:
+    build:
+      context: .
+      dockerfile: src/brottsbalken/monitoring/Dockerfile
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app/src
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./src/brottsbalken/monitoring:/app/src/brottsbalken/monitoring

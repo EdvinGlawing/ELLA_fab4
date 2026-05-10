@@ -350,6 +350,7 @@ name = "brottsbalken-frontend"
 version = "0.1.0"
 source = { virtual = "src/brottsbalken/frontend" }
 dependencies = [
+    { name = "elevenlabs" },
     { name = "httpx" },
     { name = "python-dotenv" },
     { name = "streamlit" },
@@ -357,6 +358,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "elevenlabs", specifier = ">=0.1.0" },
     { name = "httpx" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "streamlit", specifier = ">=1.56.0" },

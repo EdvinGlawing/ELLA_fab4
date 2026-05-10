@@ -35,4 +35,4 @@ MODEL_SMALL="openrouter:openai/gpt-oss-20b:free"
 MODEL_MEDIUM="google-gla:gemini-3-flash-preview"
 MODEL_LARGE="openrouter:nvidia/nemotron-3-super-120b-a12b:free"
 
-LLM_JUDGE = "openrouter:/openai/gpt-oss-120b:free"
+LLM_JUDGE = "google-gla:gemini-3-flash-preview"

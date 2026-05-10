@@ -7,4 +7,5 @@ dependencies = [
     "streamlit>=1.56.0",
     "httpx",
     "python-dotenv>=1.2.2",
+    "elevenlabs>=0.1.0",
 ]

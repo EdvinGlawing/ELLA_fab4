@@ -1,0 +1,22 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app/src
+
+COPY pyproject.toml uv.lock ./
+COPY src/brottsbalken/backend/pyproject.toml src/brottsbalken/backend/pyproject.toml
+COPY src/brottsbalken/frontend/pyproject.toml src/brottsbalken/frontend/pyproject.toml
+COPY src/brottsbalken/monitoring/pyproject.toml src/brottsbalken/monitoring/pyproject.toml
+
+RUN pip install --no-cache-dir uv 
+
+RUN uv sync --no-dev
+
+COPY src ./src
+
+EXPOSE 5001
+
+CMD ["uv", "run", "--package", "monitoring", "mlflow", "ui", "--backend-store-uri", "sqlite:///app/src/brottsbalken/monitoring/mlflow.db", "--host", "0.0.0.0", "--port", "5001"]
