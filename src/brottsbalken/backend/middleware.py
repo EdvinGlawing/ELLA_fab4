@@ -14,10 +14,11 @@ def logging_middleware(app: FastAPI):
         mlflow.set_tracking_uri(f"sqlite:///{MONITORING_PATH / 'mlflow.db'}")
         start_time = time.perf_counter()
 
-        # Ange experiment explicit så agents.py inte kan störa
+        
         with mlflow.start_run(
             run_name=f"{request.method} {request.url.path}",
             experiment_id=mlflow.set_experiment("brottsbalken").experiment_id,
+            nested=True
         ):
             try:
                 response = await call_next(request)
@@ -39,7 +40,7 @@ def logging_middleware(app: FastAPI):
             mlflow.set_tags(
                 {
                     "environment": "dev",
-                    "client_ip": request.client.host,  # ← bugg: du hade request.url.path här
+                    "client_ip": request.client.host, 
                     "method": request.method,
                 }
             )

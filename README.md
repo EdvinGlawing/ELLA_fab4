@@ -9,7 +9,6 @@ Målet är att göra juridisk information mer tillgänglig genom en RAG-baserad 
 Vi bygger en chatbot där användaren kan ställa frågor om Brottsbalken och få:
 - ett begripligt svar
 - hänvisning till relevanta kapitel/paragrafer
-- möjlighet att följa upp med nya frågor i samma kontext
 Projektet är en del av kursen i AI Engineering och LLMOps och utvecklas med agilt arbetssätt i grupp.
 
 ## Status just nu
@@ -38,29 +37,7 @@ Pågående / kvar:
 6. **(Planerad) API + LLM**: FastAPI endpoint för chatbot-svar
 7. **(Planerad) Frontend**: användargränssnitt för chat
 
-## Repo-struktur
-```text
-.
-├── README.md
-├── pyproject.toml
-├── way_of_working.md
-├── data/
-└── src/
-    └── brottsbalken/
-        ├── backend/
-        │   ├── api.py
-        │   └── agent.py
-        ├── data/
-        │   ├── raw_data/
-        │   └── clean_data/
-        ├── scripts/
-        │   ├── parse.py
-        │   └── vectorize.py
-        ├── knowledge_base/
-        │   └── lancedb/
-        ├── explorations/
-        └── utils/
-            └── constants.py
+
 Dataöversikt
 Nuvarande dataset innehåller:
 
