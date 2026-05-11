@@ -11,31 +11,15 @@ Vi bygger en chatbot där användaren kan ställa frågor om Brottsbalken och f�
 - hänvisning till relevanta kapitel/paragrafer
 Projektet är en del av kursen i AI Engineering och LLMOps och utvecklas med agilt arbetssätt i grupp.
 
-## Status just nu
-Projektet är under aktiv utveckling. Följande delar är klara hittills:
-- [x] Datainsamling och rådata i markdown/json
-- [x] Parser för att strukturera lagtext
-- [x] Clean dataset på paragrafnivå
-- [x] Embeddings + indexering i LanceDB
-- [x] Projektstruktur i `src/`
-- [x] Way of Working-dokument
-Pågående / kvar:
-- [ ] FastAPI-backend för frågeendpoint
-- [ ] Chat/agentlogik ovanpå retrieval
-- [ ] Frontend
-- [ ] Dockerisering
-- [ ] README med screenshots + demoflöde
-- [ ] (Bonus) MLflow för prompt-versionering och utvärdering
-- [ ] (Bonus) Deployment till Azure
 
-## Arkitektur (nuvarande + planerad)
+## Arkitektur 
 1. **Rådata**: Brottsbalken i markdown/json
 2. **Parsing**: extraherar metadata, kapitel, paragrafer
 3. **Datastädning**: normaliserad paragrafdata
 4. **Embedding**: vektorrepresentation av text
 5. **Vector DB**: lagring och semantisk sökning i LanceDB
-6. **(Planerad) API + LLM**: FastAPI endpoint för chatbot-svar
-7. **(Planerad) Frontend**: användargränssnitt för chat
+6. **API + LLM**: FastAPI endpoint för chatbot-svar
+7. **Frontend**: användargränssnitt för chat
 
 
 Dataöversikt
@@ -67,20 +51,25 @@ way of working-dokument
 presentation med demo
 Se way_of_working.md för detaljer.
 
-Demo (lägg till senare)
+## Screenshots
 
- Screenshot: startsida
+### Startsida
+![Frontend startsida](screenshots/frontend_startsida.png)
 
- Screenshot: fråga + svar
+### Chatbot
+![Frontend chatbot](screenshots/frontend_chatbot.png)
 
- Screenshot: källa/referenser
+### Info-sida
+![Frontend info](screenshots/frontend_info.png)
 
- Kort GIF/video av chatflöde
+### Backend
+![Backend](screenshots/backend.png)
+
+### MLflow experiments
+![MLflow experiments](screenshots/mlflow_experiments.png)
+
 Begränsningar / disclaimer
 Denna chatbot är ett utbildningsprojekt och ersätter inte juridisk rådgivning. Modellen kan göra fel; svar bör verifieras mot original lagtext.
 
 Team
-(Lägg till namn, roller och ansvar)
-
-Individuell reflektion
-(Länkar eller sektioner för varje gruppmedlems reflektion)
+Edvin Glawing, Linus Larsson, Lucas Lindh, Andreas Eriksson
