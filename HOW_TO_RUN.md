@@ -86,7 +86,7 @@ uv run mlflow ui
 
 ## 5. How to Run with Docker
 
-
+docker compose up -d --build   #this requires the vectorize script to have been ran, env file with correct api key.
 
 ## How to run the scripts and what they do
 
