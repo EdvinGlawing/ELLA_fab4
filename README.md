@@ -73,3 +73,60 @@ Denna chatbot är ett utbildningsprojekt och ersätter inte juridisk rådgivning
 
 Team
 Edvin Glawing, Linus Larsson, Lucas Lindh, Andreas Eriksson
+
+## Repo Structure
+
+.
+├── Dockerfile
+├── HOW_TO_RUN.md
+├── README.md
+├── docker-compose.yaml
+├── explorations
+│   ├── exploration.ipynb
+│   └── vectorize.ipynb
+├── pyproject.toml
+├── src
+│   └── brottsbalken
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   └── __init__.cpython-312.pyc
+│       ├── backend
+│       │   ├── Dockerfile
+│       │   ├── __init__.py
+│       │   ├── __pycache__
+│       │   ├── agents.py
+│       │   ├── api.py
+│       │   ├── constants.py
+│       │   ├── data_models.py
+│       │   ├── middleware.py
+│       │   ├── pyproject.toml
+│       │   └── retriever.py
+│       ├── data
+│       │   ├── clean_data
+│       │   └── raw_data
+│       ├── frontend
+│       │   ├── Dockerfile
+│       │   ├── Edvin.png
+│       │   ├── __pycache__
+│       │   ├── app.py
+│       │   ├── edvin_lagbok.png
+│       │   ├── pages
+│       │   ├── pyproject.toml
+│       │   └── utils.py
+│       ├── knowledge_base
+│       │   └── lancedb
+│       ├── monitoring
+│       │   ├── Dockerfile
+│       │   ├── __init__.py
+│       │   ├── evaluation_data_short.json
+│       │   ├── mlflow.db
+│       │   ├── monitoring.ipynb
+│       │   ├── prompt_engineering.ipynb
+│       │   └── pyproject.toml
+│       └── scripts
+│           ├── __init__.py
+│           ├── __pycache__
+│           ├── parse.py
+│           └── vectorize.py
+├── uv.lock
+└── way_of_working.md
