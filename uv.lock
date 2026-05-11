@@ -2364,6 +2364,7 @@ version = "0.1.0"
 source = { virtual = "src/brottsbalken/monitoring" }
 dependencies = [
     { name = "elevenlabs" },
+    { name = "gunicorn" },
     { name = "ipykernel" },
     { name = "mlflow" },
     { name = "pandas" },
@@ -2373,6 +2374,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "elevenlabs", specifier = ">=2.45.0" },
+    { name = "gunicorn" },
     { name = "ipykernel", specifier = ">=7.2.0" },
     { name = "mlflow", specifier = ">=3.1.1" },
     { name = "pandas", specifier = ">=2.3.3" },

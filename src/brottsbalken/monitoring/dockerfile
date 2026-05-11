@@ -19,4 +19,4 @@ COPY src ./src
 
 EXPOSE 5001
 
-CMD ["uv", "run", "--package", "monitoring", "mlflow", "ui", "--backend-store-uri", "sqlite:///app/src/brottsbalken/monitoring/mlflow.db", "--host", "0.0.0.0", "--port", "5001"]
+CMD ["uv", "run", "--package", "monitoring", "mlflow", "server", "--backend-store-uri", "sqlite:////app/src/brottsbalken/monitoring/mlflow.db", "--host", "0.0.0.0", "--port", "5001", "--allowed-hosts", "*.azurecontainerapps.io"]

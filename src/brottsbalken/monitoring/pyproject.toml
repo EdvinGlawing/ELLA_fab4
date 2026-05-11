@@ -9,4 +9,5 @@ dependencies = [
     "python-dotenv>=1.2.2",
     "ipykernel>=7.2.0",
     "elevenlabs>=2.45.0",
+    "gunicorn",
 ]
